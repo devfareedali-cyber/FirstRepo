@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fareed Ali | HR Business Partner &amp; Tech Enthusiast</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(53, 53, 52, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.08);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15);
+        }
+        button, a.btn {
+            position: relative;
+            overflow: hidden;
+        }
+        button::before, a.btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+        button:hover::before, a.btn:hover::before {
+            left: 100%;
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent);
+            margin: 4rem 0;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #c3f5ff 0%, #00e5ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .scroll-animate-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        .scroll-animate-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        .scroll-animate-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideInRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .scroll-animate-scale {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .scroll-animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+            animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        /* Stagger delays for scroll animations */
+        .scroll-animate.visible:nth-child(1) { animation-delay: 0ms; }
+        .scroll-animate.visible:nth-child(2) { animation-delay: 100ms; }
+        .scroll-animate.visible:nth-child(3) { animation-delay: 200ms; }
+        .scroll-animate.visible:nth-child(4) { animation-delay: 300ms; }
+        .scroll-animate.visible:nth-child(5) { animation-delay: 400ms; }
+        .scroll-animate.visible:nth-child(6) { animation-delay: 500ms; }
+        /* Stagger animation delays */
+        .animate-fade-in:nth-child(1) { animation-delay: 0ms; }
+        .animate-fade-in:nth-child(2) { animation-delay: 100ms; }
+        .animate-fade-in:nth-child(3) { animation-delay: 200ms; }
+        .animate-fade-in:nth-child(4) { animation-delay: 300ms; }
+        .animate-fade-in:nth-child(5) { animation-delay: 400ms; }
+</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#f3bf26",
+                      "surface": "#131313",
+                      "primary-fixed-dim": "#00daf3",
+                      "on-primary": "#00363d",
+                      "on-background": "#e5e2e1",
+                      "inverse-on-surface": "#313030",
+                      "tertiary-fixed": "#ffdf96",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-secondary": "#313030",
+                      "surface-container-low": "#1c1b1b",
+                      "primary-fixed": "#9cf0ff",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "surface-tint": "#00daf3",
+                      "inverse-primary": "#006875",
+                      "surface-dim": "#131313",
+                      "surface-container": "#201f1f",
+                      "primary": "#c3f5ff",
+                      "primary-container": "#00e5ff",
+                      "on-secondary-container": "#b7b5b4",
+                      "secondary": "#c8c6c5",
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#bac9cc",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "outline": "#849396",
+                      "outline-variant": "#3b494c",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-bright": "#3a3939",
+                      "inverse-surface": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#474746",
+                      "on-primary-fixed-variant": "#004f58",
+                      "on-error-container": "#ffdad6",
+                      "tertiary": "#ffeac0",
+                      "on-primary-container": "#00626e",
+                      "on-surface": "#e5e2e1",
+                      "surface-container-highest": "#353534",
+                      "on-error": "#690005",
+                      "background": "#131313",
+                      "tertiary-container": "#fec931",
+                      "secondary-container": "#474746",
+                      "error-container": "#93000a",
+                      "on-primary-fixed": "#001f24",
+                      "on-tertiary-fixed": "#251a00",
+                      "on-tertiary": "#3e2e00",
+                      "on-tertiary-fixed-variant": "#594400",
+                      "on-tertiary-container": "#6f5500",
+                      "surface-container-high": "#2a2a2a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.5rem",
+                      "xl": "1rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          }
+        }
+    </script>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-surface-variant/40 backdrop-blur-xl flex justify-between items-center px-8 py-4 z-[100] shadow-[0_20px_40px_rgba(0,229,255,0.06)]">
+<div class="text-xl font-bold tracking-tighter text-[#c3f5ff] font-headline uppercase">FAREED ALI</div>
+<div id="navLinks" class="hidden md:flex items-center gap-8"></div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-2 rounded-full font-bold text-sm tracking-tight transition-transform active:scale-95 duration-200">Connect</button>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden" id="intro">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-30"></div>
+<div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+<div class="max-w-2xl">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-6 block">The Digital Curator</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold leading-tight tracking-tighter mb-8">
+                    FAREED ALI <br/>
+<span class="text-primary-fixed-dim">HR Business Partner</span> <br/>
+<span class="text-white/40">&amp; Tech Enthusiast</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+                    Bridging the gap between human capital and technological innovation. Crafting seamless operational systems for the modern workforce.
+                </p>
+<div id="heroActions" class="flex gap-4"></div>
+</div>
+<!-- 3D Placeholder Component -->
+<div class="relative aspect-square flex items-center justify-center">
+<div class="w-full h-full rounded-xl bg-surface-container-lowest border border-outline-variant/10 flex items-center justify-center group overflow-hidden">
+<!-- Representing a 3D Canvas element -->
+<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+<div class="relative w-48 h-48 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
+<div class="relative z-10 text-center p-12 glass-card rounded-xl border border-white/5 transform group-hover:scale-105 transition-transform duration-700">
+<span class="material-symbols-outlined text-7xl text-primary mb-4" data-icon="terminal">terminal</span>
+<p class="font-headline text-white/50 text-sm tracking-widest uppercase">System Initialized</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-32 bg-surface-container-low" id="about">
+<div class="container mx-auto px-6">
+<div id="aboutContainer"></div>
+</div>
+</section>
+<!-- Experience Section (The Journey) -->
+<section class="py-32 bg-surface" id="journey">
+<div class="container mx-auto px-6">
+<div class="mb-20 flex justify-between items-end">
+<div>
+<h2 class="font-headline text-5xl font-bold tracking-tighter">THE JOURNEY</h2>
+<p class="text-primary mt-2">Professional Evolution</p>
+</div>
+<div class="hidden md:block h-px flex-1 bg-outline-variant/20 mx-12 mb-4"></div>
+<span class="font-label text-6xl text-white/5 opacity-10">LOGS</span>
+</div>
+<div class="relative max-w-4xl mx-auto space-y-24">
+<!-- Timeline Stem -->
+<div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-outline-variant/20 -translate-x-1/2 hidden md:block"></div>
+<div id="journeyContainer"></div>
+</div>
+</div>
+</section>
+<!-- Education & Certifications (Bento Grid) -->
+<section class="py-32 bg-surface-container-low">
+<div class="container mx-auto px-6">
+<h2 class="font-headline text-4xl font-bold mb-16 tracking-tighter">CREDENTIALS</h2>
+<div id="credentialsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="py-32 bg-surface" id="skills">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline text-5xl font-bold tracking-tighter mb-8">FORGED IN <br/><span class="text-primary">DATA &amp; PEOPLE</span></h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-12">
+                        My skill set is bifurcated into deep technical execution and strategic human management. I use one to amplify the other.
+                    </p>
+<div id="skillsList" class="space-y-10"></div>
+</div>
+<div id="skillsGrid" class="grid grid-cols-2 gap-4"></div>
+</div>
+</div>
+</section>
+<!-- Projects & Blog Section -->
+<section class="py-32 bg-surface-container-low overflow-hidden" id="artifacts">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-20 gap-6">
+<h2 class="font-headline text-5xl font-bold tracking-tighter">DIGITAL ARTIFACTS</h2>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-surface rounded-full border border-primary/20 text-primary font-label text-xs uppercase tracking-widest">All Work</button>
+<button class="px-6 py-2 text-white/50 font-label text-xs uppercase tracking-widest hover:text-white transition-colors">HR Tech</button>
+<button class="px-6 py-2 text-white/50 font-label text-xs uppercase tracking-widest hover:text-white transition-colors">Development</button>
+</div>
+</div>
+<div id="artifactsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#131313] flex flex-col items-center gap-8 py-16 px-4 border-t border-white/5">
+<div class="text-sm font-black text-white font-headline tracking-tighter uppercase">FAREED ALI</div>
+<div id="footerLinks" class="flex gap-12"></div>
+<div class="mt-12 text-center">
+<p class="text-white/40 font-['Manrope'] text-xs uppercase tracking-[0.2em]">© 2024 FAREED ALI • THE DIGITAL CURATOR</p>
+<div class="mt-8 opacity-20 hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-label uppercase tracking-widest">Systems Online</span>
+</div>
+</div>
+</footer>
+<script>
+// Immediate test
+console.log('=== PAGE SCRIPT STARTED ===');
+console.log('Current URL:', window.location.href);
+console.log('Document ready state:', document.readyState);
+// Intersection Observer for scroll animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add animation class
+      entry.target.classList.add('visible');
+    } else {
+      // Remove animation class when out of view so it can replay
+      entry.target.classList.remove('visible');
+    }
+  });
+}, observerOptions);
+
+// Initialize scroll observer
+function initScrollAnimations() {
+  console.log('Initializing scroll animations');
+  const scrollElements = document.querySelectorAll('[class*="scroll-animate"]');
+  console.log('Found scroll elements:', scrollElements.length);
+  scrollElements.forEach(element => observer.observe(element));
+}
+
+const siteData = {
+  hero: {
+    subtitle: 'The Digital Curator',
+    name: 'FAREED ALI',
+    title1: 'HR Business Partner',
+    title2: '& Tech Enthusiast',
+    tagline: 'Bridging the gap between human capital and technological innovation. Crafting seamless operational systems for the modern workforce.'
+  },
+  about: {
+    sectionNum: '01',
+    heading: 'The Architect',
+    intro: 'I am a unique blend of <span class="text-primary font-medium">HR operational excellence</span> and <span class="text-primary font-medium">technical prowess</span>. With a foundation in Computer Science, I view human resources through an algorithmic lens—optimizing systems, automating workflows, and leveraging data to drive people decisions.',
+    cards: [
+      {
+        icon: 'psychology',
+        title: 'HR Philosophy',
+        desc: 'Focusing on empathetic leadership backed by data-driven insights. Specializing in payroll management, compliance, and talent development.'
+      },
+      {
+        icon: 'code',
+        title: 'Tech Foundation',
+        desc: 'Passionate about Python, C++, and HRIS implementations. I don\'t just use tools; I understand how to build them.'
+      }
+    ]
+  },
+  credentials: {
+    education: {
+      icon: 'school',
+      title: 'BS Computer Science',
+      desc: 'Foundation in software engineering, data structures, and algorithmic thinking. Applied technology to optimize human resource operations.',
+      badge: 'Honors Graduate'
+    },
+    certs: [
+      {
+        icon: 'workspace_premium',
+        title: 'Google Data Analytics',
+        subtitle: 'Professional Certificate',
+        id: 'GOOG-2921'
+      },
+      {
+        icon: 'verified',
+        title: 'SAP HR Fundamentals',
+        subtitle: 'Enterprise Resource Planning',
+        id: 'SAP-901'
+      }
+    ],
+    learning: {
+      icon: 'psychology_alt',
+      title: 'Continuous Learning',
+      desc: 'Actively pursuing Advanced Python for Data Science and Strategic HR Management credentials.'
+    }
+  },
+  nav: [
+    { label: 'Intro', href: '#intro', active: true },
+    { label: 'About', href: '#about' },
+    { label: 'Journey', href: '#journey' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Artifacts', href: '#artifacts' }
+  ],
+  heroButtons: [
+    {
+      text: 'View Portfolio',
+      href: '#artifacts',
+      classes: 'bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]'
+    },
+    {
+      text: 'My Blog',
+      href: '#',
+      classes: 'border border-outline-variant/30 text-white px-8 py-4 rounded-full font-bold hover:bg-surface-variant/20 transition-all'
+    }
+  ],
+  journey: [
+    {
+      period: '2022 — PRESENT',
+      title: 'HR Business Partner',
+      company: 'Citi Pharma Limited',
+      bullets: [
+        'Managing complex payroll cycles for over 500+ employees with 100% accuracy.',
+        'Spearheading the digitization of employee records, reducing retrieval time by 40%.',
+        'Developing Python-based scripts to automate monthly attendance reporting.'
+      ]
+    },
+    {
+      period: '2020 — 2022',
+      title: 'HR Systems Analyst',
+      company: 'TalentStream',
+      bullets: [
+        'Designed HR workflow dashboards to improve onboarding visibility.',
+        'Led employee data consolidation efforts using SQL and Power Query.',
+        'Integrated attendance and leave systems to reduce errors by 25%.'
+      ]
+    }
+  ],
+  skills: [
+    { name: 'HR Analytics', percent: 95 },
+    { name: 'Payroll Management', percent: 90 },
+    { name: 'Python', percent: 85 },
+    { name: 'C++ Development', percent: 75 }
+  ],
+  featureCards: [
+    { icon: 'group', title: 'Labor Relations' },
+    { icon: 'query_stats', title: 'Predictive Hiring' },
+    { icon: 'cloud_done', title: 'HRIS Strategy' },
+    { icon: 'policy', title: 'Compliance' }
+  ],
+  artifacts: [
+    {
+      label: 'Project / Automation',
+      icon: 'visibility',
+      title: 'Python Payroll Automator',
+      desc: 'Custom script designed to reconcile multi-channel attendance data for pharmaceutical manufacturing staff.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCiYX2E9R05OhZ5ULUrD4KbHK8YsLb0ToaE3AkodneXfGRbsWlszQCaqdiMD0sCrXEraq96A0ta8_blyRJFEMoNwzBVQHPphvGgOu239nwPCYehXfoqDiejDY58qSLnphMM2lZAMCOxeiiuTaE8UpC_g7H0YMr8OjmpBFHCdBcCtuO8s8t9qp1hOMGIZ2UpiTdM8CZ7vK_IFdLZtOh6ia8IGdnPBwh4FMFTpw9ZVbf83bppz3kkRdnMgyULpYcAlzduy44jlc6RDjI'
+    },
+    {
+      label: 'Blog / Insights',
+      icon: 'article',
+      title: 'The Algorithmic Recruiter',
+      desc: 'Exploring how LLMs are reshaping the initial screening processes in the pharmaceutical industry.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyEy7oN74pfQ-PsasR8BTO867wNZv-lxCBVKKqCj6JMiLXjKJz9V3r37W-D0p5FJ8xXpXNUa1d88nvC3TzHFFxb1eXwmcnSnuUzWzFN0vsZNbQcu-NPbIZGEeZfhfzdkAUekBUQ3nj_iw706sUX_YGakTLu2nK6Mrsonn9y5A0_hRzPgnCCcTVsBrTODlALhi56bjFDJH2uMqeLimgu9HJs4MHR3r1i1XoN3enGwrRTMcp9mS6w2-rjFSyR_67iCoPQqr3oH1fKoU'
+    },
+    {
+      label: 'Project / Dev',
+      icon: 'code_blocks',
+      title: 'Employee Portal v2.0',
+      desc: 'Full-stack employee self-service portal built to streamline leave applications and tax document retrieval.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAl0CwTpqsuU12Y0W7nIlOx9mg8WeaS-EIVN5FvYThOlRUsm-spvAOqJKOnVX1e0tsYGIbUe0p1AojUg_ezj_NAPQ9f9-HzAOJqy7BZLVZJNX8OcOkY4EFxPy2tLSpJHneBO9_oepURk8fM8q0Uj9v0M3AZ6D5yB4rUUIaGH-iZjrxTdIvFrGkTK1F-PBKISW4CZ7cEasH83aVVPw83Z4Alx7hDfGctJMYf7U_YHfTCtn_O7Pu7KRlPN02cRbSaeqKCkxd4Nwc3cA'
+    }
+  ],
+  footer: [
+    { label: 'LinkedIn', href: '#' },
+    { label: 'GitHub', href: '#' },
+    { label: 'Read.cv', href: '#' },
+    { label: 'Email', href: '#' }
+  ]
+};
+
+function renderNav() {
+  const nav = document.querySelector('#navLinks');
+  if (!nav) return;
+  nav.innerHTML = siteData.nav
+    .map((item, idx) => `
+      <a class="animate-fade-in ${item.active ? 'text-[#c3f5ff] font-bold border-b-2 border-[#c3f5ff] pb-1' : 'text-white/70 hover:text-[#c3f5ff]'} hover:scale-105 transition-all font-headline tracking-tight" href="${item.href}" style="animation-delay: ${idx * 50}ms;">${item.label}</a>
+    `)
+    .join('');
+}
+
+function renderHeroContent() {
+  const h1 = document.querySelector('h1');
+  const p = document.querySelector('section#intro > .container > .max-w-2xl > p');
+  if (h1) {
+    h1.innerHTML = `${siteData.hero.name} <br/>
+<span class="text-primary-fixed-dim">${siteData.hero.title1}</span> <br/>
+<span class="text-white/40">${siteData.hero.title2}</span>`;
+  }
+  if (p) {
+    p.textContent = siteData.hero.tagline;
+  }
+}
+
+function renderAbout() {
+  const container = document.querySelector('#aboutContainer');
+  if (!container) return;
+  const data = siteData.about;
+  container.innerHTML = `
+    <div class="flex flex-col lg:flex-row gap-20 animate-fade-in scroll-animate-left" data-scroll>
+      <div class="lg:w-1/3">
+        <h2 class="font-headline text-4xl font-bold tracking-tighter text-primary">${data.sectionNum} // ${data.heading}</h2>
+        <div class="mt-8 space-y-4">
+          <div class="h-1 w-20 bg-primary-container"></div>
+          <p class="font-label text-sm uppercase tracking-widest text-on-surface-variant">About Me</p>
+        </div>
+      </div>
+      <div class="lg:w-2/3">
+        <div class="prose prose-invert max-w-none">
+          <p class="text-3xl font-body leading-relaxed text-white/90 font-light mb-12">${data.intro}</p>
+          <div class="grid md:grid-cols-2 gap-8">
+            ${data.cards.map((card, idx) => `
+              <div class="p-8 bg-surface-container rounded-lg border border-outline-variant/10 hover:border-primary/20 transition-all duration-300 scroll-animate card-shadow card-hover" data-scroll style="animation-delay: ${idx * 100}ms;">
+                <h4 class="font-headline text-xl font-bold mb-4 flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary text-2xl">${card.icon}</span>
+                  ${card.title}
+                </h4>
+                <p class="text-on-surface-variant leading-relaxed">${card.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCredentials() {
+  const container = document.querySelector('#credentialsContainer');
+  if (!container) return;
+  const data = siteData.credentials;
+  
+  let html = `
+    <!-- Main Education -->
+    <div class="md:col-span-2 p-10 bg-surface-container-high rounded-xl border border-white/5 relative overflow-hidden group animate-fade-in scroll-animate-scale card-shadow card-hover hover:border-primary/20 transition-all duration-300" data-scroll>
+      <div class="relative z-10">
+        <span class="material-symbols-outlined text-primary text-5xl mb-6">${data.education.icon}</span>
+        <h3 class="font-headline text-3xl font-bold mb-4">${data.education.title}</h3>
+        <p class="text-on-surface-variant text-lg leading-relaxed max-w-md">${data.education.desc}</p>
+        <div class="mt-8 flex items-center gap-4">
+          <span class="px-4 py-2 bg-primary/10 rounded-full text-xs font-label uppercase tracking-widest border border-primary/30 text-primary font-semibold">${data.education.badge}</span>
+        </div>
+      </div>
+      <div class="absolute top-0 right-0 p-8 opacity-5 transform translate-x-1/4 -translate-y-1/4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-1000">
+        <span class="material-symbols-outlined text-[200px]">code</span>
+      </div>
+    </div>
+  `;
+  
+  data.certs.forEach((cert, idx) => {
+    html += `
+      <div class="p-8 bg-surface-container rounded-xl border border-white/5 flex flex-col justify-between scroll-animate card-shadow card-hover" data-scroll style="animation-delay: ${idx * 100}ms;">
+        <div>
+          <span class="material-symbols-outlined ${idx === 0 ? 'text-primary-container' : 'text-tertiary-fixed-dim'} text-5xl mb-6">${cert.icon}</span>
+          <h4 class="font-headline text-lg font-bold tracking-tight">${cert.title}</h4>
+          <p class="text-on-surface-variant text-sm mt-3 font-medium">${cert.subtitle}</p>
+        </div>
+        <div class="mt-6 flex justify-between items-center pt-4 border-t border-white/5">
+          <span class="text-xs font-label text-white/50 tracking-widest">${cert.id}</span>
+          <span class="material-symbols-outlined text-primary/60 hover:text-primary transition-colors">open_in_new</span>
+        </div>
+      </div>
+    `;
+  });
+  
+  html += `
+    <div class="md:col-span-2 p-8 bg-primary/5 rounded-xl border border-primary/10 flex items-center gap-8 scroll-animate-right hover:bg-primary/10 transition-all duration-300" data-scroll style="animation-delay: 200ms;">
+      <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-primary">${data.learning.icon}</span>
+      </div>
+      <div>
+        <h4 class="font-headline text-lg font-bold">${data.learning.title}</h4>
+        <p class="text-sm text-on-surface-variant">${data.learning.desc}</p>
+      </div>
+    </div>
+  `;
+  
+  container.innerHTML = html;
+}
+
+function renderHeroActions() {
+  const actions = document.querySelector('#heroActions');
+  if (!actions) return;
+  actions.innerHTML = siteData.heroButtons
+    .map((button, idx) => `
+      <a href="${button.href}" class="animate-fade-in ${button.classes}" style="animation-delay: ${idx * 100}ms;">${button.text}</a>
+    `)
+    .join('');
+}
+
+function renderJourney() {
+  const container = document.querySelector('#journeyContainer');
+  if (!container) return;
+  container.innerHTML = siteData.journey
+    .map((item, index) => `
+      <div class="relative group scroll-animate" style="animation-delay: ${index * 150}ms;" data-scroll>
+        <div class="md:flex items-center justify-between gap-12">
+          <div class="md:w-1/2 md:text-right pr-12 hidden md:block">
+            <span class="font-headline text-2xl text-primary font-bold">${item.period}</span>
+          </div>
+          <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 z-10 border-4 border-surface group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="md:w-1/2 md:pl-12 pl-8">
+            <div class="p-8 bg-surface-container-high rounded-lg border border-white/5 hover:border-primary/20 transition-all duration-300 card-shadow card-hover">
+              <span class="md:hidden text-primary font-bold mb-2 block tracking-widest text-sm">${item.period}</span>
+              <h3 class="font-headline text-2xl font-bold mb-2">${item.title}</h3>
+              <p class="text-primary-container font-semibold mb-6 text-sm tracking-wide">${item.company}</p>
+              <ul class="space-y-4 text-on-surface-variant">
+                ${item.bullets
+                  .map(point => `
+                    <li class="flex gap-3 hover:translate-x-1 transition-transform duration-200">
+                      <span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
+                      <span>${point}</span>
+                    </li>
+                  `)
+                  .join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    `)
+    .join('');
+}
+
+function renderSkills() {
+  const list = document.querySelector('#skillsList');
+  const grid = document.querySelector('#skillsGrid');
+  if (list) {
+    list.innerHTML = siteData.skills
+      .map((skill, idx) => `
+        <div class="scroll-animate" style="animation-delay: ${idx * 80}ms;" data-scroll>
+          <div class="flex justify-between mb-3">
+            <span class="font-headline font-bold uppercase tracking-widest text-sm">${skill.name}</span>
+            <span class="text-primary font-bold">${skill.percent}%</span>
+          </div>
+          <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+            <div class="h-full bg-primary-container transition-all duration-500" style="width: ${skill.percent}%; animation: slideIn 1s ease-out ${idx * 100}ms;"></div>
+          </div>
+        </div>
+      `)
+      .join('');
+  }
+  if (grid) {
+    grid.innerHTML = siteData.featureCards
+      .map((card, idx) => `
+        <div class="bg-surface-container p-6 rounded-lg border border-white/5 aspect-square flex flex-col items-center justify-center text-center ${card.title === 'Predictive Hiring' ? 'mt-8' : ''} ${card.title === 'HRIS Strategy' ? '-mt-8' : ''} scroll-animate card-shadow card-hover" style="animation-delay: ${idx * 100}ms;" data-scroll>
+          <span class="material-symbols-outlined text-primary text-5xl mb-4">${card.icon}</span>
+          <h5 class="font-bold text-sm tracking-tight">${card.title}</h5>
+        </div>
+      `)
+      .join('');
+  }
+}
+
+function renderArtifacts() {
+  const grid = document.querySelector('#artifactsGrid');
+  if (!grid) return;
+  grid.innerHTML = siteData.artifacts
+    .map((item, idx) => `
+      <div class="group cursor-pointer scroll-animate-scale card-shadow card-hover p-6 rounded-xl bg-surface-container/50 border border-white/5 hover:border-primary/20 transition-all duration-300" style="animation-delay: ${idx * 120}ms;" data-scroll>
+        <div class="relative aspect-video rounded-lg overflow-hidden bg-surface-container mb-6">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${item.label}" src="${item.image}" loading="lazy" />
+          <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-5xl">${item.icon}</span>
+          </div>
+        </div>
+        <p class="font-label text-xs text-primary mb-3 uppercase tracking-widest font-semibold">${item.label}</p>
+        <h3 class="font-headline text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300 leading-tight">${item.title}</h3>
+        <p class="text-on-surface-variant text-sm line-clamp-3 leading-relaxed">${item.desc}</p>
+      </div>
+    `)
+    .join('');
+}
+
+function renderFooter() {
+  const footer = document.querySelector('#footerLinks');
+  if (!footer) return;
+  footer.innerHTML = siteData.footer
+    .map((link, idx) => `
+      <a class="text-white/40 hover:text-white transition-colors font-['Manrope'] text-xs uppercase tracking-widest animate-fade-in" href="${link.href}" style="animation-delay: ${idx * 80}ms;">${link.label}</a>
+    `)
+    .join('');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded fired');
+  try {
+    renderNav();
+    console.log('Nav rendered');
+    renderHeroContent();
+    console.log('Hero rendered');
+    renderAbout();
+    console.log('About rendered');
+    renderCredentials();
+    console.log('Credentials rendered');
+    renderHeroActions();
+    console.log('Hero actions rendered');
+    renderJourney();
+    console.log('Journey rendered');
+    renderSkills();
+    console.log('Skills rendered');
+    renderArtifacts();
+    console.log('Artifacts rendered');
+    renderFooter();
+    console.log('Footer rendered');
+    
+    // Initialize scroll animations after all content is rendered
+    setTimeout(() => {
+      console.log('Starting scroll animations');
+      initScrollAnimations();
+    }, 100);
+  } catch (error) {
+    console.error('Error during rendering:', error);
+  }
+});
+</script>
+</body></html>
