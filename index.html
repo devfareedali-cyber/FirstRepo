@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fareed Alii | HR Business Partner &amp; Tech Enthusiast</title>
+<title>Fareed Ali | HR Business Partner &amp; Tech Enthusiast</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -237,7 +237,7 @@
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-surface-variant/40 backdrop-blur-xl flex justify-between items-center px-8 py-4 z-[100] shadow-[0_20px_40px_rgba(0,229,255,0.06)]">
 <div class="text-xl font-bold tracking-tighter text-[#c3f5ff] font-headline uppercase">FAREED ALI</div>
 <div id="navLinks" class="hidden md:flex items-center gap-8"></div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-2 rounded-full font-bold text-sm tracking-tight transition-transform active:scale-95 duration-200">Connect</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-2 rounded-full font-bold text-sm tracking-tight transition-transform active:scale-95 duration-200" onclick="window.location.href='mailto:dev.fareedali@gmail.com'">Connect</button>
 </nav>
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden" id="intro">
@@ -315,6 +315,135 @@
 </div>
 </div>
 </section>
+<!-- HR Metrics Calculator Section -->
+<section class="py-32 bg-surface" id="hr-calculator">
+<div class="container mx-auto px-6">
+<div class="mb-20 flex justify-between items-end">
+<div>
+<h2 class="font-headline text-5xl font-bold tracking-tighter">HR METRICS <br/><span class="text-primary">CALCULATOR</span></h2>
+<p class="text-primary-container mt-2 font-label text-sm tracking-wider">Real-time Workforce Analytics</p>
+</div>
+<div class="hidden md:block h-px flex-1 bg-outline-variant/20 mx-12 mb-4"></div>
+<span class="font-label text-6xl text-white/5 opacity-10">METRICS</span>
+</div>
+<!-- Calculator Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12" id="metricsGrid"></div>
+<!-- Results Summary Panel -->
+<div class="mt-12 p-8 bg-surface-container-high rounded-xl border border-primary/10 scroll-animate">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-2xl font-bold text-primary">RESULTS SUMMARY</h3>
+<button onclick="copyAllResults()" class="flex items-center gap-2 px-4 py-2 bg-primary/20 hover:bg-primary/30 rounded-lg border border-primary/30 text-primary font-semibold text-sm transition-all">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+Copy All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6" id="resultsSummary">
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">1. Turnover Rate</p>
+<button onclick="copySingleResult('1', 'Turnover Rate')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-1">0</span>%</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">2. Productivity Rate</p>
+<button onclick="copySingleResult('2', 'Productivity Rate')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-2">0</span>%</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">3. Salary Increase</p>
+<button onclick="copySingleResult('3', 'Salary Increase Rate')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-3">0</span>%</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">4. Revenue Per Employee</p>
+<button onclick="copySingleResult('4', 'Revenue Per Employee')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary">Rs. <span id="result-4">0</span></p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">5. Engagement Score</p>
+<button onclick="copySingleResult('5', 'Engagement Score')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-5">0</span></p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">6. Absenteeism Rate</p>
+<button onclick="copySingleResult('6', 'Absenteeism Rate')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-6">0</span>%</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">7. Training Cost</p>
+<button onclick="copySingleResult('7', 'Training Cost Per Employee')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary">Rs. <span id="result-7">0</span></p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">8. Time To Fill</p>
+<button onclick="copySingleResult('8', 'Time To Fill')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-8">0</span> days</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">9. Offer Acceptance</p>
+<button onclick="copySingleResult('9', 'Offer Acceptance Rate')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary"><span id="result-9">0</span>%</p>
+</div>
+
+<div class="relative p-6 bg-surface-container rounded-lg border border-white/5 group">
+<div class="flex justify-between items-start mb-2">
+<p class="text-white/60 font-label text-xs uppercase tracking-widest">10. Cost Per Hire</p>
+<button onclick="copySingleResult('10', 'Cost Per Hire')" class="opacity-0 group-hover:opacity-100 transition-opacity" title="Copy">
+<span class="material-symbols-outlined text-sm text-primary">content_copy</span>
+</button>
+</div>
+<p class="text-2xl font-bold text-primary">Rs. <span id="result-10">0</span></p>
+</div>
+</div>
+</div>
+<!-- Reset Button -->
+<div class="flex justify-center mt-12">
+<button onclick="resetCalculator()" class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-8 py-3 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] active:scale-95">Reset All Values</button>
+</div>
+</section>
+
 <!-- Projects & Blog Section -->
 <section class="py-32 bg-surface-container-low overflow-hidden" id="artifacts">
 <div class="container mx-auto px-6">
@@ -375,14 +504,14 @@ const siteData = {
   hero: {
     subtitle: 'The Digital Curator',
     name: 'FAREED ALI',
-    title1: 'HR Business Partner',
-    title2: '& Tech Enthusiast',
-    tagline: 'Bridging the gap between human capital and technological innovation. Crafting seamless operational systems for the modern workforce.'
+    title1: 'HR EXECUTIVE',
+    title2: 'DATA ANALYST • HRBP',
+    tagline: 'Results-driven HR professional adept at ensuring regulatory compliance, facilitating HR audits, and leveraging data analytics to optimize workflows and support management decision-making.'
   },
   about: {
     sectionNum: '01',
     heading: 'The Architect',
-    intro: 'I am a unique blend of <span class="text-primary font-medium">HR operational excellence</span> and <span class="text-primary font-medium">technical prowess</span>. With a foundation in Computer Science, I view human resources through an algorithmic lens—optimizing systems, automating workflows, and leveraging data to drive people decisions.',
+    intro: 'Results-driven HR professional with hands-on experience managing <span class="text-primary font-medium">core HR operations</span>, <span class="text-primary font-medium">HRIS (FlowHCM)</span>, and <span class="text-primary font-medium">compensation & benefits</span>. With a foundation in Computer Science, I leverage data analytics to optimize workflows and support strategic decision-making.',
     cards: [
       {
         icon: 'psychology',
@@ -404,18 +533,11 @@ const siteData = {
       badge: 'Honors Graduate'
     },
     certs: [
-      {
-        icon: 'workspace_premium',
-        title: 'Google Data Analytics',
-        subtitle: 'Professional Certificate',
-        id: 'GOOG-2921'
-      },
-      {
-        icon: 'verified',
-        title: 'SAP HR Fundamentals',
-        subtitle: 'Enterprise Resource Planning',
-        id: 'SAP-901'
-      }
+      { icon: 'verified', title: 'SHRM', subtitle: 'Strategic Human Resource Management' },
+      { icon: 'verified', title: 'SAP', subtitle: 'Business Analyst Professional Certificate' },
+      { icon: 'verified', title: 'Google', subtitle: 'AI Essential Specialization Course' },
+      { icon: 'verified', title: 'Google', subtitle: 'Advanced Data Analytics Course' },
+      { icon: 'verified', title: 'UC Irvine', subtitle: 'Human Resource Analytics' }
     ],
     learning: {
       icon: 'psychology_alt',
@@ -428,53 +550,50 @@ const siteData = {
     { label: 'About', href: '#about' },
     { label: 'Journey', href: '#journey' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Artifacts', href: '#artifacts' }
+    { label: 'Credentials', href: '#credentials' },
+    { label: 'Contact', href: '#contact' }
   ],
   heroButtons: [
     {
-      text: 'View Portfolio',
-      href: '#artifacts',
-      classes: 'bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]'
+      text: 'My Resume',
+      href: '#',
+      classes: 'bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]',
+      onclick: 'downloadResume()'
     },
     {
-      text: 'My Blog',
-      href: '#',
+      text: 'Connect',
+      href: 'mailto:dev.fareedali@gmail.com',
       classes: 'border border-outline-variant/30 text-white px-8 py-4 rounded-full font-bold hover:bg-surface-variant/20 transition-all'
     }
   ],
   journey: [
     {
-      period: '2022 — PRESENT',
-      title: 'HR Business Partner',
+      period: 'JUNE 2024 — PRESENT',
+      title: 'HR Officer',
       company: 'Citi Pharma Limited',
       bullets: [
-        'Managing complex payroll cycles for over 500+ employees with 100% accuracy.',
-        'Spearheading the digitization of employee records, reducing retrieval time by 40%.',
-        'Developing Python-based scripts to automate monthly attendance reporting.'
-      ]
-    },
-    {
-      period: '2020 — 2022',
-      title: 'HR Systems Analyst',
-      company: 'TalentStream',
-      bullets: [
-        'Designed HR workflow dashboards to improve onboarding visibility.',
-        'Led employee data consolidation efforts using SQL and Power Query.',
-        'Integrated attendance and leave systems to reduce errors by 25%.'
+        'Managed full-cycle recruitment by developing and implementing robust Standard Operating Procedures (SOPs) for sourcing, interviewing, and final selection',
+        'Maintained and updated employee personnel files and HR databases using FlowHCM, ensuring strict accuracy and compliance for successful HR audits',
+        'Administered compensation processes by accurately executing payroll inputs, overtime records, and bulk data changes through FlowHCM',
+        'Processed end-to-end employee lifecycle activities, managing onboarding and offboarding workflows, including clearances and final settlements',
+        'Generated HR reports and dashboards using Excel and FlowHCM to provide actionable insights for management review',
+        'Ensured daily HR operations comply with labor laws and internal SOPs, while partnering cross-functionally with Finance, IT, and Compliance teams'
       ]
     }
   ],
   skills: [
-    { name: 'HR Analytics', percent: 95 },
-    { name: 'Payroll Management', percent: 90 },
-    { name: 'Python', percent: 85 },
-    { name: 'C++ Development', percent: 75 }
+    { name: 'HR Operations & HRIS', percent: 95 },
+    { name: 'Payroll & Benefits Administration', percent: 90 },
+    { name: 'HR Analytics & Reporting', percent: 85 },
+    { name: 'Recruitment & Employee Lifecycle', percent: 85 }
   ],
   featureCards: [
-    { icon: 'group', title: 'Labor Relations' },
-    { icon: 'query_stats', title: 'Predictive Hiring' },
-    { icon: 'cloud_done', title: 'HRIS Strategy' },
-    { icon: 'policy', title: 'Compliance' }
+    { icon: 'business_center', title: 'FlowHCM Expertise' },
+    { icon: 'assignment_ind', title: 'Recruitment & Selection' },
+    { icon: 'paid', title: 'Payroll Management' },
+    { icon: 'policy', title: 'Compliance & Labor Law' },
+    { icon: 'assessment', title: 'HR Analytics' },
+    { icon: 'people', title: 'Employee Lifecycle' }
   ],
   artifacts: [
     {
@@ -500,10 +619,153 @@ const siteData = {
     }
   ],
   footer: [
-    { label: 'LinkedIn', href: '#' },
-    { label: 'GitHub', href: '#' },
-    { label: 'Read.cv', href: '#' },
-    { label: 'Email', href: '#' }
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/@Fareed%20Ali' },
+    { label: 'Email', href: 'mailto:dev.fareedali@gmail.com' },
+    { label: 'Phone', href: 'tel:+92-316-1779404' },
+    { label: 'Location', href: '#' }
+  ],
+  hrMetrics: [
+    {
+      id: 1,
+      name: 'Turnover Rate',
+      icon: 'people_outline',
+      formula: '(Employees who left / Average employees) × 100',
+      inputs: [
+        { label: 'Employees who left', placeholder: '0', key: 'employees_left' },
+        { label: 'Average number of employees', placeholder: '0', key: 'avg_employees' }
+      ],
+      calculate: (values) => {
+        if (values.avg_employees === 0) return 0;
+        return ((values.employees_left / values.avg_employees) * 100).toFixed(2);
+      }
+    },
+    {
+      id: 2,
+      name: 'Employee Productivity Rate',
+      icon: 'trending_up',
+      formula: '(Total Output / Total Employees) × 100',
+      inputs: [
+        { label: 'Total Output', placeholder: '0', key: 'total_output' },
+        { label: 'Total number of employees', placeholder: '0', key: 'employees_productivity' }
+      ],
+      calculate: (values) => {
+        if (values.employees_productivity === 0) return 0;
+        return ((values.total_output / values.employees_productivity) * 100).toFixed(2);
+      }
+    },
+    {
+      id: 3,
+      name: 'Salary Increase Rate',
+      icon: 'currency_exchange',
+      formula: '(Total Salary Increase / Total Payroll) × 100',
+      inputs: [
+        { label: 'Total Salary Increase', placeholder: '0', key: 'total_salary_increase' },
+        { label: 'Total Payroll', placeholder: '0', key: 'total_payroll' }
+      ],
+      calculate: (values) => {
+        if (values.total_payroll === 0) return 0;
+        return ((values.total_salary_increase / values.total_payroll) * 100).toFixed(2);
+      }
+    },
+    {
+      id: 4,
+      name: 'Revenue Per Employee',
+      icon: 'attach_money',
+      formula: 'Total Revenue / Total Number of Employees',
+      inputs: [
+        { label: 'Total Revenue', placeholder: '0', key: 'total_revenue' },
+        { label: 'Total number of employees', placeholder: '0', key: 'employees_revenue' }
+      ],
+      calculate: (values) => {
+        if (values.employees_revenue === 0) return 0;
+        return (values.total_revenue / values.employees_revenue).toFixed(2);
+      }
+    },
+    {
+      id: 5,
+      name: 'Employee Engagement Score',
+      icon: 'psychology',
+      formula: 'Sum of all engagement survey scores / Total respondents',
+      inputs: [
+        { label: 'Sum of all engagement scores', placeholder: '0', key: 'engagement_sum' },
+        { label: 'Total number of respondents', placeholder: '0', key: 'respondents' }
+      ],
+      calculate: (values) => {
+        if (values.respondents === 0) return 0;
+        return (values.engagement_sum / values.respondents).toFixed(2);
+      }
+    },
+    {
+      id: 6,
+      name: 'Absenteeism Rate',
+      icon: 'event_busy',
+      formula: '(Days absent / Total working days) × 100',
+      inputs: [
+        { label: 'Number of days absent', placeholder: '0', key: 'days_absent' },
+        { label: 'Total number of working days', placeholder: '0', key: 'working_days' }
+      ],
+      calculate: (values) => {
+        if (values.working_days === 0) return 0;
+        return ((values.days_absent / values.working_days) * 100).toFixed(2);
+      }
+    },
+    {
+      id: 7,
+      name: 'Training Cost Per Employee',
+      icon: 'school',
+      formula: 'Total Training Cost / Number of Employees Trained',
+      inputs: [
+        { label: 'Total Training Cost', placeholder: '0', key: 'training_cost' },
+        { label: 'Number of employees trained', placeholder: '0', key: 'trained_employees' }
+      ],
+      calculate: (values) => {
+        if (values.trained_employees === 0) return 0;
+        return (values.training_cost / values.trained_employees).toFixed(2);
+      }
+    },
+    {
+      id: 8,
+      name: 'Time To Fill',
+      icon: 'schedule',
+      formula: 'Total days taken to fill / Number of positions filled',
+      inputs: [
+        { label: 'Total days taken to fill positions', placeholder: '0', key: 'days_to_fill' },
+        { label: 'Number of positions filled', placeholder: '0', key: 'positions_filled' }
+      ],
+      calculate: (values) => {
+        if (values.positions_filled === 0) return 0;
+        return (values.days_to_fill / values.positions_filled).toFixed(2);
+      }
+    },
+    {
+      id: 9,
+      name: 'Offer Acceptance Rate',
+      icon: 'thumbs_up',
+      formula: '(Offers accepted / Total offers extended) × 100',
+      inputs: [
+        { label: 'Number of offers accepted', placeholder: '0', key: 'offers_accepted' },
+        { label: 'Number of offers extended', placeholder: '0', key: 'offers_extended' }
+      ],
+      calculate: (values) => {
+        if (values.offers_extended === 0) return 0;
+        return ((values.offers_accepted / values.offers_extended) * 100).toFixed(2);
+      }
+    },
+    {
+      id: 10,
+      name: 'Cost Per Hire',
+      icon: 'monetization_on',
+      formula: '(Total recruitment + onboarding cost) / Number of hires',
+      inputs: [
+        { label: 'Total recruitment cost', placeholder: '0', key: 'recruitment_cost' },
+        { label: 'Total onboarding cost', placeholder: '0', key: 'onboarding_cost' },
+        { label: 'Number of hires', placeholder: '0', key: 'num_hires' }
+      ],
+      calculate: (values) => {
+        if (values.num_hires === 0) return 0;
+        return ((values.recruitment_cost + values.onboarding_cost) / values.num_hires).toFixed(2);
+      }
+    }
   ]
 };
 
@@ -620,9 +882,13 @@ function renderHeroActions() {
   const actions = document.querySelector('#heroActions');
   if (!actions) return;
   actions.innerHTML = siteData.heroButtons
-    .map((button, idx) => `
-      <a href="${button.href}" class="animate-fade-in ${button.classes}" style="animation-delay: ${idx * 100}ms;">${button.text}</a>
-    `)
+    .map((button, idx) => {
+      const attrs = button.onclick ? `onclick="${button.onclick}"` : `href="${button.href}"`;
+      const tag = button.onclick ? 'button' : 'a';
+      return `
+        <${tag} ${attrs} class="animate-fade-in ${button.classes}" style="animation-delay: ${idx * 100}ms;">${button.text}</${tag}>
+      `;
+    })
     .join('');
 }
 
@@ -720,6 +986,214 @@ function renderFooter() {
     .join('');
 }
 
+function renderHRMetrics() {
+  const container = document.querySelector('#metricsGrid');
+  if (!container) return;
+  
+  container.innerHTML = siteData.hrMetrics
+    .map((metric, idx) => `
+      <div class="p-8 bg-surface-container-high rounded-xl border border-white/5 hover:border-primary/20 transition-all duration-300 scroll-animate card-shadow card-hover" style="animation-delay: ${idx * 100}ms;" data-scroll>
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <h3 class="font-headline text-2xl font-bold mb-2">${metric.id}. ${metric.name}</h3>
+            <p class="text-xs text-primary-container uppercase tracking-wider font-semibold">${metric.formula}</p>
+          </div>
+          <span class="material-symbols-outlined text-primary text-3xl">${metric.icon}</span>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+          ${metric.inputs
+            .map(input => `
+              <div>
+                <label class="block text-white/70 text-sm font-semibold mb-2">${input.label}</label>
+                <input 
+                  type="number" 
+                  class="w-full px-4 py-2 bg-surface-container rounded-lg border border-white/10 text-white placeholder-white/30 focus:border-primary focus:outline-none transition-colors"
+                  placeholder="${input.placeholder}"
+                  data-key="${input.key}"
+                  data-metric="${metric.id}"
+                  onchange="calculateMetric(${metric.id})"
+                  oninput="calculateMetric(${metric.id})"
+                />
+              </div>
+            `)
+            .join('')}
+        </div>
+        
+        <div class="p-4 bg-primary/5 rounded-lg border border-primary/10 flex items-center justify-between">
+          <div>
+            <p class="text-white/60 text-xs uppercase tracking-wider font-semibold mb-2">Calculated Result</p>
+            <p class="text-3xl font-bold text-primary" id="metric-result-${metric.id}">0</p>
+            ${metric.id === 4 || metric.id === 7 || metric.id === 10 ? '<p class="text-xs text-white/50 mt-1">PKR Currency</p>' : ''}
+            ${metric.id === 2 || metric.id === 1 || metric.id === 3 || metric.id === 6 || metric.id === 9 ? '<p class="text-xs text-white/50 mt-1">Percentage</p>' : ''}
+            ${metric.id === 8 ? '<p class="text-xs text-white/50 mt-1">Days</p>' : ''}
+            ${metric.id === 5 ? '<p class="text-xs text-white/50 mt-1">Score</p>' : ''}
+          </div>
+          <button onclick="copyMetricResult(${metric.id}, '${metric.name}')" class="p-3 rounded-lg bg-surface-container hover:bg-primary/20 border border-white/10 hover:border-primary/30 transition-all text-primary" title="Copy this result">
+            <span class="material-symbols-outlined">content_copy</span>
+          </button>
+        </div>
+      </div>
+    `)
+    .join('');
+}
+
+function copyMetricResult(metricId, metricName) {
+  const resultElement = document.getElementById(`metric-result-${metricId}`);
+  if (!resultElement || resultElement.textContent === '0') return;
+  
+  const value = resultElement.textContent;
+  let textToCopy = `${metricName}: ${value}`;
+  
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    showCopyNotification(`Copied: ${metricName}`);
+  }).catch(() => {
+    showCopyNotification('Failed to copy', true);
+  });
+}
+
+function calculateMetric(metricId) {
+  const metric = siteData.hrMetrics.find(m => m.id === metricId);
+  if (!metric) return;
+  
+  // Get all input values for this metric
+  const inputs = document.querySelectorAll(`input[data-metric="${metricId}"]`);
+  const values = {};
+  
+  inputs.forEach(input => {
+    const key = input.getAttribute('data-key');
+    values[key] = parseFloat(input.value) || 0;
+  });
+  
+  // Calculate result
+  const result = metric.calculate(values);
+  
+  // Update result display
+  const resultElement = document.getElementById(`metric-result-${metricId}`);
+  if (resultElement) {
+    if ([2, 1, 3, 6, 9].includes(metricId)) {
+      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '%';
+    } else if ([4, 7, 10].includes(metricId)) {
+      resultElement.textContent = 'Rs. ' + parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    } else if (metricId === 8) {
+      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' days';
+    } else {
+      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+  }
+  
+  // Update summary panel if it's one of the showcase metrics
+  updateSummary(metricId, result);
+}
+
+function updateSummary(metricId, value) {
+  const resultElement = document.getElementById(`result-${metricId}`);
+  if (resultElement) {
+    const formattedValue = parseFloat(value).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    resultElement.textContent = formattedValue;
+  }
+}
+
+function copySingleResult(metricId, metricName) {
+  const resultElement = document.getElementById(`result-${metricId}`);
+  if (!resultElement) return;
+  
+  const value = resultElement.textContent;
+  let textToCopy = `${metricName}: ${value}`;
+  
+  // Add units based on metric type
+  if ([1, 2, 3, 6, 9].includes(parseInt(metricId))) {
+    textToCopy = `${metricName}: ${value}%`;
+  } else if ([4, 7, 10].includes(parseInt(metricId))) {
+    textToCopy = `${metricName}: Rs. ${value}`;
+  } else if (metricId === '8') {
+    textToCopy = `${metricName}: ${value} days`;
+  }
+  
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    showCopyNotification('Copied to clipboard!');
+  }).catch(() => {
+    showCopyNotification('Failed to copy', true);
+  });
+}
+
+function copyAllResults() {
+  const metricsData = siteData.hrMetrics.map(metric => {
+    const resultElement = document.getElementById(`result-${metric.id}`);
+    if (!resultElement) return null;
+    
+    const value = resultElement.textContent;
+    let formattedValue = value;
+    
+    if ([1, 2, 3, 6, 9].includes(metric.id)) {
+      formattedValue = `${value}%`;
+    } else if ([4, 7, 10].includes(metric.id)) {
+      formattedValue = `Rs. ${value}`;
+    } else if (metric.id === 8) {
+      formattedValue = `${value} days`;
+    }
+    
+    return `${metric.id}. ${metric.name}: ${formattedValue}`;
+  }).filter(item => item !== null);
+  
+  const textToCopy = metricsData.join('\n');
+  
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    showCopyNotification('All results copied to clipboard!');
+  }).catch(() => {
+    showCopyNotification('Failed to copy all results', true);
+  });
+}
+
+function downloadResume() {
+  // Create a link to download the resume
+  const link = document.createElement('a');
+  link.href = 'Fareed Resume.pdf';
+  link.download = 'Fareed_Ali_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showCopyNotification('Resume downloading...');
+}
+
+function showCopyNotification(message, isError = false) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = isError 
+    ? 'fixed bottom-4 right-4 bg-error text-white px-6 py-3 rounded-lg shadow-lg animate-fade-in z-50'
+    : 'fixed bottom-4 right-4 bg-primary text-on-primary-fixed px-6 py-3 rounded-lg shadow-lg animate-fade-in z-50';
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    notification.remove();
+  }, 2000);
+}
+
+function resetCalculator() {
+  const inputs = document.querySelectorAll('#metricsGrid input');
+  inputs.forEach(input => {
+    input.value = '';
+    input.dispatchEvent(new Event('change'));
+  });
+  
+  // Reset all result displays
+  siteData.hrMetrics.forEach(metric => {
+    const resultElement = document.getElementById(`metric-result-${metric.id}`);
+    if (resultElement) {
+      resultElement.textContent = '0';
+    }
+    const summaryElement = document.getElementById(`result-${metric.id}`);
+    if (summaryElement) {
+      summaryElement.textContent = '0';
+    }
+  });
+  
+  showCopyNotification('All values reset');
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded fired');
   try {
@@ -737,6 +1211,8 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log('Journey rendered');
     renderSkills();
     console.log('Skills rendered');
+    renderHRMetrics();
+    console.log('HR Metrics rendered');
     renderArtifacts();
     console.log('Artifacts rendered');
     renderFooter();
