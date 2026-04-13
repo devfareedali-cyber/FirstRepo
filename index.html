@@ -5,6 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fareed Ali | HR Business Partner &amp; Tech Enthusiast</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -108,6 +109,32 @@
                 transform: translateY(0);
             }
         }
+        @keyframes dropDown {
+            0% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes floatDot {
+            0%, 100% {
+                transform: translateY(-20px) scale(1);
+                box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+            }
+            50% {
+                transform: translateY(0) scale(1.1);
+                box-shadow: 0 0 30px rgba(0, 229, 255, 0.8);
+            }
+        }
         .animate-fade-in {
             animation: fadeIn 0.6s ease-out forwards;
         }
@@ -161,6 +188,53 @@
         .animate-fade-in:nth-child(3) { animation-delay: 200ms; }
         .animate-fade-in:nth-child(4) { animation-delay: 300ms; }
         .animate-fade-in:nth-child(5) { animation-delay: 400ms; }
+        /* Timeline dot scroll trigger */
+        .timeline-dot {
+            animation: none;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .timeline-dot.visible {
+            animation: floatDot 2s ease-in-out infinite;
+        }
+        /* Light Theme Variables */
+        body.light-theme {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+        }
+        body.light-theme * {
+            color-scheme: light;
+        }
+        body.light-theme .bg-surface { background-color: #ffffff; }
+        body.light-theme .bg-surface-container-low { background-color: #f0f0f0; }
+        body.light-theme .bg-surface-container-high { background-color: #e8e8e8; }
+        body.light-theme .bg-surface-container { background-color: #e8e8e8; }
+        body.light-theme .text-on-surface-variant { color: #333333 !important; }
+        body.light-theme .text-white\/70 { color: #555555 !important; }
+        body.light-theme .text-white\/40 { color: #777777 !important; }
+        body.light-theme .text-white\/50 { color: #666666 !important; }
+        body.light-theme .text-white\/60 { color: #555555 !important; }
+        body.light-theme .text-white\/30 { color: #888888 !important; }
+        body.light-theme .text-white\/5 { background-color: #f5f5f5; }
+        body.light-theme .border-white\/5 { border-color: #e0e0e0 !important; }
+        body.light-theme .border-outline-variant { border-color: #d0d0d0 !important; }
+        body.light-theme .bg-primary\/10 { background-color: #e0f7ff; }
+        body.light-theme .bg-primary\/20 { background-color: #c0ecff; }
+        body.light-theme .bg-primary\/5 { background-color: #f0faff; }
+        body.light-theme .glass-card { background: rgba(255, 255, 255, 0.9); }
+        body.light-theme .bg-surface-variant { background-color: #e8e8e8; }
+        body.light-theme .bg-surface-variant\/40 { background-color: rgba(232, 232, 232, 0.6); }
+        body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4 { color: #1a1a1a !important; }
+        body.light-theme p { color: #333333 !important; }
+        body.light-theme a { color: #0066cc; }
+        body.light-theme .prose { color: #333333 !important; }
+        body.light-theme .font-label { color: #555555 !important; }
+        body.light-theme .card-shadow { box-shadow: 0 10px 30px rgba(0, 200, 200, 0.1); }
+        body.light-theme .bg-error { background-color: #ff6b5b; }
+        body.light-theme input { background-color: #f5f5f5 !important; color: #1a1a1a !important; border-color: #d0d0d0 !important; }
+        body.light-theme input::placeholder { color: #999999 !important; }
+        body.light-theme button { color: #1a1a1a; }
+        body.light-theme .opacity-10 { color: #e0e0e0 !important; }
+
 </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -237,7 +311,12 @@
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-surface-variant/40 backdrop-blur-xl flex justify-between items-center px-8 py-4 z-[100] shadow-[0_20px_40px_rgba(0,229,255,0.06)]">
 <div class="text-xl font-bold tracking-tighter text-[#c3f5ff] font-headline uppercase">FAREED ALI</div>
 <div id="navLinks" class="hidden md:flex items-center gap-8"></div>
+<div class="flex items-center gap-4">
+<button id="themeToggle" class="p-2 rounded-full hover:bg-surface-variant/20 transition-all" title="Toggle theme">
+<span class="material-symbols-outlined text-[#c3f5ff]">brightness_7</span>
+</button>
 <button class="bg-gradient-to-br from-primary to-primary-container text-on-primary-fixed px-6 py-2 rounded-full font-bold text-sm tracking-tight transition-transform active:scale-95 duration-200" onclick="window.location.href='mailto:dev.fareedali@gmail.com'">Connect</button>
+</div>
 </nav>
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden" id="intro">
@@ -276,17 +355,22 @@
 </div>
 </section>
 <!-- Experience Section (The Journey) -->
-<section class="py-32 bg-surface" id="journey">
-<div class="container mx-auto px-6">
-<div class="mb-20 flex justify-between items-end">
+<section class="py-20 bg-surface relative" id="journey">
+<canvas id="particleCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+<div class="container mx-auto px-6 relative z-10">
+<div class="mb-16 flex justify-between items-end">
 <div>
-<h2 class="font-headline text-5xl font-bold tracking-tighter">THE JOURNEY</h2>
-<p class="text-primary mt-2">Professional Evolution</p>
+<h2 class="font-headline text-5xl font-bold tracking-tighter">EXPERIENCE</h2>
+<p class="text-primary mt-2">Professional Background</p>
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<p class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">HR Metrics</p>
+<p class="text-primary mt-2 font-body text-sm">Raw data into insightful HR metrics.</p>
+</div>
 </div>
 <div class="hidden md:block h-px flex-1 bg-outline-variant/20 mx-12 mb-4"></div>
 <span class="font-label text-6xl text-white/5 opacity-10">LOGS</span>
 </div>
-<div class="relative max-w-4xl mx-auto space-y-24">
+<div class="relative max-w-4xl mx-auto space-y-12 pt-8">
 <!-- Timeline Stem -->
 <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-outline-variant/20 -translate-x-1/2 hidden md:block"></div>
 <div id="journeyContainer"></div>
@@ -320,8 +404,8 @@
 <div class="container mx-auto px-6">
 <div class="mb-20 flex justify-between items-end">
 <div>
-<h2 class="font-headline text-5xl font-bold tracking-tighter">HR METRICS <br/><span class="text-primary">CALCULATOR</span></h2>
-<p class="text-primary-container mt-2 font-label text-sm tracking-wider">Real-time Workforce Analytics</p>
+<h2 class="font-headline text-5xl font-bold tracking-tighter">HR METRICS</h2>
+<p class="text-primary mt-2">Raw data into insightful HR metrics.</p>
 </div>
 <div class="hidden md:block h-px flex-1 bg-outline-variant/20 mx-12 mb-4"></div>
 <span class="font-label text-6xl text-white/5 opacity-10">METRICS</span>
@@ -492,12 +576,48 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, observerOptions);
 
+// Track scroll position for timeline dot
+function updateTimelineDotPosition() {
+  const journeySection = document.querySelector('#journey');
+  if (!journeySection) return;
+  
+  const dots = document.querySelectorAll('.timeline-dot');
+  if (dots.length === 0) return;
+  
+  // Get journey section bounds
+  const rect = journeySection.getBoundingClientRect();
+  const sectionTop = rect.top;
+  const sectionHeight = rect.height;
+  const viewportHeight = window.innerHeight;
+  
+  dots.forEach(dot => {
+    const dotRect = dot.getBoundingClientRect();
+    const dotTop = dotRect.top;
+    
+    // Calculate scroll progress within viewport
+    const distanceFromTop = dotTop - sectionTop;
+    const progress = Math.max(0, Math.min(1, (dotTop - viewportHeight / 2) / (viewportHeight / 2)));
+    
+    // Apply animation and movement
+    if (dotTop < viewportHeight && dotTop > 0) {
+      dot.classList.add('visible');
+      dot.style.transform = `translateY(${progress * 0}px) scale(1.2)`;
+    } else {
+      dot.classList.remove('visible');
+    }
+  });
+}
+
 // Initialize scroll observer
 function initScrollAnimations() {
   console.log('Initializing scroll animations');
   const scrollElements = document.querySelectorAll('[class*="scroll-animate"]');
   console.log('Found scroll elements:', scrollElements.length);
   scrollElements.forEach(element => observer.observe(element));
+  
+  // Track scroll for timeline dots
+  window.addEventListener('scroll', updateTimelineDotPosition, { passive: true });
+  updateTimelineDotPosition();
 }
 
 const siteData = {
@@ -548,10 +668,10 @@ const siteData = {
   nav: [
     { label: 'Intro', href: '#intro', active: true },
     { label: 'About', href: '#about' },
-    { label: 'Journey', href: '#journey' },
+    { label: 'Experience', href: '#journey' },
     { label: 'Skills', href: '#skills' },
     { label: 'Credentials', href: '#credentials' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'HR Metrics', href: '#hr-calculator' }
   ],
   heroButtons: [
     {
@@ -571,13 +691,35 @@ const siteData = {
       period: 'JUNE 2024 — PRESENT',
       title: 'HR Officer',
       company: 'Citi Pharma Limited',
-      bullets: [
-        'Managed full-cycle recruitment by developing and implementing robust Standard Operating Procedures (SOPs) for sourcing, interviewing, and final selection',
-        'Maintained and updated employee personnel files and HR databases using FlowHCM, ensuring strict accuracy and compliance for successful HR audits',
-        'Administered compensation processes by accurately executing payroll inputs, overtime records, and bulk data changes through FlowHCM',
-        'Processed end-to-end employee lifecycle activities, managing onboarding and offboarding workflows, including clearances and final settlements',
-        'Generated HR reports and dashboards using Excel and FlowHCM to provide actionable insights for management review',
-        'Ensured daily HR operations comply with labor laws and internal SOPs, while partnering cross-functionally with Finance, IT, and Compliance teams'
+      sections: [
+        {
+          heading: 'Recruitment & Selection',
+          points: ['Managed full-cycle recruitment by developing and implementing robust Standard Operating Procedures (SOPs) for sourcing, interviewing, and final selection']
+        },
+        {
+          heading: 'HRIS & Records Management',
+          points: ['Maintain and update employee personnel files and HR databases using FlowHCM, ensuring strict accuracy and compliance to successfully support internal and external HR audits']
+        },
+        {
+          heading: 'Compensation & Benefits',
+          points: ['Administer compensation processes by accurately executing payroll inputs, overtime records, and bulk data changes through FlowHCM']
+        },
+        {
+          heading: 'Employee Lifecycle Activities',
+          points: ['Process end-to-end employee lifecycle activities, managing onboarding and offboarding workflows, including clearances and final settlements']
+        },
+        {
+          heading: 'HR Correspondence',
+          points: ['Prepare and issue official HR-related letters, including offer letters, appointment letters, and policy updates']
+        },
+        {
+          heading: 'Reporting & Analytics',
+          points: ['Generate HR reports and dashboards using Excel and FlowHCM to provide actionable insights for management review']
+        },
+        {
+          heading: 'Compliance & Coordination',
+          points: ['Ensure daily HR operations comply with labor laws and internal SOPs, while partnering cross-functionally with Finance, IT, and Compliance teams to support smooth operations']
+        }
       ]
     }
   ],
@@ -899,25 +1041,34 @@ function renderJourney() {
     .map((item, index) => `
       <div class="relative group scroll-animate" style="animation-delay: ${index * 150}ms;" data-scroll>
         <div class="md:flex items-center justify-between gap-12">
-          <div class="md:w-1/2 md:text-right pr-12 hidden md:block">
+          <div class="md:w-1/2 md:text-right pr-12 hidden md:block scroll-animate-right" style="animation-delay: ${index * 200}ms;" data-scroll>
             <span class="font-headline text-2xl text-primary font-bold">${item.period}</span>
           </div>
-          <div class="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 z-10 border-4 border-surface group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="scroll-animate timeline-dot absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 z-10 border-4 border-surface group-hover:scale-150 transition-transform duration-300"></div>
           <div class="md:w-1/2 md:pl-12 pl-8">
             <div class="p-8 bg-surface-container-high rounded-lg border border-white/5 hover:border-primary/20 transition-all duration-300 card-shadow card-hover">
               <span class="md:hidden text-primary font-bold mb-2 block tracking-widest text-sm">${item.period}</span>
-              <h3 class="font-headline text-2xl font-bold mb-2">${item.title}</h3>
+              <h3 class="font-headline text-2xl font-bold mb-1">${item.title}</h3>
               <p class="text-primary-container font-semibold mb-6 text-sm tracking-wide">${item.company}</p>
-              <ul class="space-y-4 text-on-surface-variant">
-                ${item.bullets
-                  .map(point => `
-                    <li class="flex gap-3 hover:translate-x-1 transition-transform duration-200">
-                      <span class="material-symbols-outlined text-primary text-sm mt-1">check_circle</span>
-                      <span>${point}</span>
-                    </li>
+              <div class="space-y-6 text-on-surface-variant">
+                ${item.sections
+                  .map(section => `
+                    <div>
+                      <h4 class="font-headline font-bold text-primary mb-3 text-sm uppercase tracking-wide">${section.heading}:</h4>
+                      <ul class="space-y-2 ml-4">
+                        ${section.points
+                          .map(point => `
+                            <li class="flex gap-3 hover:translate-x-1 transition-transform duration-200">
+                              <span class="material-symbols-outlined text-primary text-sm mt-0.5 shrink-0">check_circle</span>
+                              <span class="text-sm leading-relaxed">${point}</span>
+                            </li>
+                          `)
+                          .join('')}
+                      </ul>
+                    </div>
                   `)
                   .join('')}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1194,6 +1345,151 @@ function resetCalculator() {
   showCopyNotification('All values reset');
 }
 
+// Three.js Particle System for Experience Section
+let particleScene, particleCamera, particleRenderer;
+let particles;
+let mouseX = 0, mouseY = 0;
+
+function initParticleSystem() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+  
+  // Scene setup
+  particleScene = new THREE.Scene();
+  
+  // Camera
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  particleCamera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  particleCamera.position.z = 30;
+  
+  // Renderer
+  particleRenderer = new THREE.WebGLRenderer({ 
+    canvas: canvas, 
+    alpha: true, 
+    antialias: true 
+  });
+  particleRenderer.setSize(width, height);
+  particleRenderer.setPixelRatio(window.devicePixelRatio);
+  particleRenderer.setClearColor(0x000000, 0);
+  
+  // Create particles - increased count
+  const particleCount = 500;
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
+  const velocities = new Float32Array(particleCount * 3);
+  
+  for (let i = 0; i < particleCount * 3; i += 3) {
+    positions[i] = (Math.random() - 0.5) * 200;
+    positions[i + 1] = (Math.random() - 0.5) * 200;
+    positions[i + 2] = (Math.random() - 0.5) * 100;
+    
+    velocities[i] = (Math.random() - 0.5) * 0.5;
+    velocities[i + 1] = (Math.random() - 0.5) * 0.5;
+    velocities[i + 2] = (Math.random() - 0.5) * 0.2;
+  }
+  
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  
+  const material = new THREE.PointsMaterial({
+    color: 0x00e5ff,
+    size: 1.5,
+    sizeAttenuation: true,
+    transparent: true,
+    opacity: 0.7
+  });
+  
+  particles = new THREE.Points(geometry, material);
+  particleScene.add(particles);
+  
+  // Store velocities for animation
+  particles.velocities = velocities;
+  particles.particleCount = particleCount;
+  
+  // Track mouse movement
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    const newWidth = canvas.clientWidth;
+    const newHeight = canvas.clientHeight;
+    particleCamera.aspect = newWidth / newHeight;
+    particleCamera.updateProjectionMatrix();
+    particleRenderer.setSize(newWidth, newHeight);
+  });
+  
+  animateParticles();
+}
+
+function animateParticles() {
+  requestAnimationFrame(animateParticles);
+  
+  if (!particles) return;
+  
+  const positions = particles.geometry.attributes.position.array;
+  
+  // Convert mouse position to 3D coordinates
+  const targetX = mouseX * 50;
+  const targetY = mouseY * 50;
+  
+  for (let i = 0; i < positions.length; i += 3) {
+    // Original movement
+    positions[i] += particles.velocities[i];
+    positions[i + 1] += particles.velocities[i + 1];
+    positions[i + 2] += particles.velocities[i + 2];
+    
+    // Cursor attraction - particles move toward cursor
+    const dx = targetX - positions[i];
+    const dy = targetY - positions[i + 1];
+    
+    positions[i] += dx * 0.01;
+    positions[i + 1] += dy * 0.01;
+    
+    // Wrap around boundaries
+    if (positions[i] > 100) positions[i] = -100;
+    if (positions[i] < -100) positions[i] = 100;
+    if (positions[i + 1] > 100) positions[i + 1] = -100;
+    if (positions[i + 1] < -100) positions[i + 1] = 100;
+  }
+  
+  particles.geometry.attributes.position.needsUpdate = true;
+  particles.rotation.x += 0.0001;
+  particles.rotation.y += 0.0002;
+  
+  particleRenderer.render(particleScene, particleCamera);
+}
+
+// Theme Toggle
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  if (!themeToggle) return;
+  
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+  document.body.classList.toggle('light-theme', savedTheme === 'light');
+  updateThemeIcon(savedTheme);
+  
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.body.classList.toggle('light-theme', newTheme === 'light');
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  });
+}
+
+function updateThemeIcon(theme) {
+  const icon = document.querySelector('#themeToggle .material-symbols-outlined');
+  if (icon) {
+    icon.textContent = theme === 'dark' ? 'brightness_7' : 'brightness_4';
+  }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded fired');
   try {
@@ -1217,6 +1513,15 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log('Artifacts rendered');
     renderFooter();
     console.log('Footer rendered');
+    
+    // Initialize particle system
+    setTimeout(() => {
+      initParticleSystem();
+      console.log('Particle system initialized');
+    }, 500);
+    
+    // Initialize theme toggle
+    initThemeToggle();
     
     // Initialize scroll animations after all content is rendered
     setTimeout(() => {
