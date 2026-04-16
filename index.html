@@ -6,16 +6,40 @@
 <title>Fareed Ali | HR Business Partner &amp; Tech Enthusiast</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  if (typeof THREE === 'undefined') {
+    console.warn('Three.js CDN failed to load, attempting alternate CDN...');
+    var script = document.createElement('script');
+    script.src = 'https://unpkg.com/three@r128/build/three.min.js';
+    document.head.appendChild(script);
+  } else {
+    console.log('Three.js loaded successfully');
+  }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
+        :root {
+            --color-primary: #c3f5ff;
+            --color-primary-container: #00e5ff;
+            --color-primary-fixed-dim: #00daf3;
+            --color-secondary: #c8c6c5;
+            --color-tertiary: #ffeac0;
+            --color-background: #131313;
+            --color-surface: #131313;
+            --color-surface-container: #201f1f;
+            --color-surface-container-low: #1c1b1b;
+            --color-surface-container-high: #2a2a2a;
+            --color-on-surface: #e5e2e1;
+            --color-on-surface-variant: #bac9cc;
+            --color-error: #ffb4ab;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         body {
-            background-color: #131313;
-            color: #e5e2e1;
+            background-color: var(--color-background);
+            color: var(--color-on-surface);
             overflow-x: hidden;
         }
         .glass-card {
@@ -55,10 +79,15 @@
             margin: 4rem 0;
         }
         .text-gradient {
-            background: linear-gradient(135deg, #c3f5ff 0%, #00e5ff 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Metric result formatting utility classes */
+        .metric-result-percentage::after { content: '%'; }
+        .metric-result-currency::before { content: 'Rs. '; }
+        .metric-result-days::after { content: ' days'; }
+        .metric-result-score::after { content: ''; }
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -198,6 +227,15 @@
         }
         /* Light Theme Variables */
         body.light-theme {
+            --color-primary: #0066cc;
+            --color-primary-container: #e0f7ff;
+            --color-background: #f5f5f5;
+            --color-surface: #ffffff;
+            --color-surface-container: #e8e8e8;
+            --color-surface-container-low: #f0f0f0;
+            --color-surface-container-high: #e8e8e8;
+            --color-on-surface: #1a1a1a;
+            --color-on-surface-variant: #333333;
             background-color: #f5f5f5;
             color: #1a1a1a;
         }
@@ -307,6 +345,7 @@
     </script>
 </head>
 <body class="font-body selection:bg-primary-container selection:text-on-primary-fixed">
+<canvas id="particleCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-[1]" style="background: transparent;"></canvas>
 <!-- TopNavBar -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] rounded-full bg-surface-variant/40 backdrop-blur-xl flex justify-between items-center px-8 py-4 z-[100] shadow-[0_20px_40px_rgba(0,229,255,0.06)]">
 <div class="text-xl font-bold tracking-tighter text-[#c3f5ff] font-headline uppercase">FAREED ALI</div>
@@ -334,17 +373,10 @@
                 </p>
 <div id="heroActions" class="flex gap-4"></div>
 </div>
-<!-- 3D Placeholder Component -->
-<div class="relative aspect-square flex items-center justify-center">
-<div class="w-full h-full rounded-xl bg-surface-container-lowest border border-outline-variant/10 flex items-center justify-center group overflow-hidden">
-<!-- Representing a 3D Canvas element -->
-<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-<div class="relative w-48 h-48 bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
-<div class="relative z-10 text-center p-12 glass-card rounded-xl border border-white/5 transform group-hover:scale-105 transition-transform duration-700">
-<span class="material-symbols-outlined text-7xl text-primary mb-4" data-icon="terminal">terminal</span>
-<p class="font-headline text-white/50 text-sm tracking-widest uppercase">System Initialized</p>
-</div>
-</div>
+<!-- Hero Image -->
+<div class="relative aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/10 shadow-[0_0_40px_rgba(0,229,255,0.1)]">
+<img src="./hero_image.jpg" alt="Fareed Ali Hero" class="w-full h-full object-cover rounded-xl transition-transform duration-700 hover:scale-105" />
+<div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
 </div>
 </div>
 </section>
@@ -356,7 +388,6 @@
 </section>
 <!-- Experience Section (The Journey) -->
 <section class="py-20 bg-surface relative" id="journey">
-<canvas id="particleCanvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
 <div class="container mx-auto px-6 relative z-10">
 <div class="mb-16 flex justify-between items-end">
 <div>
@@ -554,6 +585,19 @@ Copy All</button>
 </div>
 </footer>
 <script>
+// Debounce utility function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // Immediate test
 console.log('=== PAGE SCRIPT STARTED ===');
 console.log('Current URL:', window.location.href);
@@ -615,8 +659,9 @@ function initScrollAnimations() {
   console.log('Found scroll elements:', scrollElements.length);
   scrollElements.forEach(element => observer.observe(element));
   
-  // Track scroll for timeline dots
-  window.addEventListener('scroll', updateTimelineDotPosition, { passive: true });
+  // Track scroll for timeline dots with debounce
+  const debouncedUpdateTimeline = debounce(updateTimelineDotPosition, 100);
+  window.addEventListener('scroll', debouncedUpdateTimeline, { passive: true });
   updateTimelineDotPosition();
 }
 
@@ -1114,7 +1159,7 @@ function renderArtifacts() {
     .map((item, idx) => `
       <div class="group cursor-pointer scroll-animate-scale card-shadow card-hover p-6 rounded-xl bg-surface-container/50 border border-white/5 hover:border-primary/20 transition-all duration-300" style="animation-delay: ${idx * 120}ms;" data-scroll>
         <div class="relative aspect-video rounded-lg overflow-hidden bg-surface-container mb-6">
-          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${item.label}" src="${item.image}" loading="lazy" />
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${item.title}" src="${item.image}" loading="lazy" decoding="async" />
           <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
             <span class="material-symbols-outlined text-white text-5xl">${item.icon}</span>
           </div>
@@ -1203,6 +1248,19 @@ function copyMetricResult(metricId, metricName) {
   });
 }
 
+// Format metric result based on type
+function formatMetricValue(metricId, value) {
+  const numValue = parseFloat(value).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  if ([2, 1, 3, 6, 9].includes(metricId)) {
+    return `${numValue}%`;
+  } else if ([4, 7, 10].includes(metricId)) {
+    return `Rs. ${numValue}`;
+  } else if (metricId === 8) {
+    return `${numValue} days`;
+  }
+  return numValue;
+}
+
 function calculateMetric(metricId) {
   const metric = siteData.hrMetrics.find(m => m.id === metricId);
   if (!metric) return;
@@ -1222,26 +1280,17 @@ function calculateMetric(metricId) {
   // Update result display
   const resultElement = document.getElementById(`metric-result-${metricId}`);
   if (resultElement) {
-    if ([2, 1, 3, 6, 9].includes(metricId)) {
-      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '%';
-    } else if ([4, 7, 10].includes(metricId)) {
-      resultElement.textContent = 'Rs. ' + parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    } else if (metricId === 8) {
-      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' days';
-    } else {
-      resultElement.textContent = parseFloat(result).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
+    resultElement.textContent = formatMetricValue(metricId, result);
   }
   
-  // Update summary panel if it's one of the showcase metrics
+  // Update summary panel
   updateSummary(metricId, result);
 }
 
 function updateSummary(metricId, value) {
   const resultElement = document.getElementById(`result-${metricId}`);
   if (resultElement) {
-    const formattedValue = parseFloat(value).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    resultElement.textContent = formattedValue;
+    resultElement.textContent = parseFloat(value).toLocaleString('en-PK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   }
 }
 
@@ -1250,16 +1299,8 @@ function copySingleResult(metricId, metricName) {
   if (!resultElement) return;
   
   const value = resultElement.textContent;
-  let textToCopy = `${metricName}: ${value}`;
-  
-  // Add units based on metric type
-  if ([1, 2, 3, 6, 9].includes(parseInt(metricId))) {
-    textToCopy = `${metricName}: ${value}%`;
-  } else if ([4, 7, 10].includes(parseInt(metricId))) {
-    textToCopy = `${metricName}: Rs. ${value}`;
-  } else if (metricId === '8') {
-    textToCopy = `${metricName}: ${value} days`;
-  }
+  const formattedValue = formatMetricValue(metricId, value);
+  const textToCopy = `${metricName}: ${formattedValue}`;
   
   navigator.clipboard.writeText(textToCopy).then(() => {
     showCopyNotification('Copied to clipboard!');
@@ -1274,15 +1315,7 @@ function copyAllResults() {
     if (!resultElement) return null;
     
     const value = resultElement.textContent;
-    let formattedValue = value;
-    
-    if ([1, 2, 3, 6, 9].includes(metric.id)) {
-      formattedValue = `${value}%`;
-    } else if ([4, 7, 10].includes(metric.id)) {
-      formattedValue = `Rs. ${value}`;
-    } else if (metric.id === 8) {
-      formattedValue = `${value} days`;
-    }
+    const formattedValue = formatMetricValue(metric.id, value);
     
     return `${metric.id}. ${metric.name}: ${formattedValue}`;
   }).filter(item => item !== null);
@@ -1345,121 +1378,344 @@ function resetCalculator() {
   showCopyNotification('All values reset');
 }
 
-// Three.js Particle System for Experience Section
+// Three.js Background Particle Field
 let particleScene, particleCamera, particleRenderer;
-let particles;
-let mouseX = 0, mouseY = 0;
+let particlePoints;
+let particleVelocities = [];
+let particleHomePositions = [];
+let pointerTarget = new THREE.Vector3(0, 0, 0);
+let pointerPrevious = new THREE.Vector3(0, 0, 0);
+let pointerVelocity = new THREE.Vector3(0, 0, 0);
+const particleCount = 210;
 
-function initParticleSystem() {
-  const canvas = document.getElementById('particleCanvas');
-  if (!canvas) return;
-  
-  // Scene setup
-  particleScene = new THREE.Scene();
-  
-  // Camera
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
-  particleCamera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-  particleCamera.position.z = 30;
-  
-  // Renderer
-  particleRenderer = new THREE.WebGLRenderer({ 
-    canvas: canvas, 
-    alpha: true, 
-    antialias: true 
-  });
-  particleRenderer.setSize(width, height);
-  particleRenderer.setPixelRatio(window.devicePixelRatio);
-  particleRenderer.setClearColor(0x000000, 0);
-  
-  // Create particles - increased count
-  const particleCount = 500;
-  const geometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(particleCount * 3);
-  const velocities = new Float32Array(particleCount * 3);
-  
-  for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = (Math.random() - 0.5) * 200;
-    positions[i + 1] = (Math.random() - 0.5) * 200;
-    positions[i + 2] = (Math.random() - 0.5) * 100;
-    
-    velocities[i] = (Math.random() - 0.5) * 0.5;
-    velocities[i + 1] = (Math.random() - 0.5) * 0.5;
-    velocities[i + 2] = (Math.random() - 0.5) * 0.2;
+// Theme colors for particles
+const themeColors = {
+  dark: {
+    primary: 0xc3f5ff,
+    secondary: 0x00e5ff,
+    accent: 0xffeac0
+  },
+  light: {
+    primary: 0x0066cc,
+    secondary: 0x00b0ff,
+    accent: 0xff9800
   }
+};
+
+let currentTheme = 'dark';
+let particleMaterial;
+
+function createParticleSprite(color) {
+  const size = 128;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
   
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  // Convert hex color to RGB
+  const r = (color >> 16) & 255;
+  const g = (color >> 8) & 255;
+  const b = color & 255;
   
-  const material = new THREE.PointsMaterial({
-    color: 0x00e5ff,
-    size: 1.5,
-    sizeAttenuation: true,
-    transparent: true,
-    opacity: 0.7
-  });
-  
-  particles = new THREE.Points(geometry, material);
-  particleScene.add(particles);
-  
-  // Store velocities for animation
-  particles.velocities = velocities;
-  particles.particleCount = particleCount;
-  
-  // Track mouse movement
-  document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-  });
-  
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    const newWidth = canvas.clientWidth;
-    const newHeight = canvas.clientHeight;
-    particleCamera.aspect = newWidth / newHeight;
-    particleCamera.updateProjectionMatrix();
-    particleRenderer.setSize(newWidth, newHeight);
-  });
-  
-  animateParticles();
+  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  gradient.addColorStop(0, `rgba(${r},${g},${b},1)`);
+  gradient.addColorStop(0.15, `rgba(${r},${g},${b},0.85)`);
+  gradient.addColorStop(0.4, `rgba(${r},${g},${b},0.5)`);
+  gradient.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.minFilter = THREE.LinearFilter;
+  texture.needsUpdate = true;
+  return texture;
 }
 
-function animateParticles() {
-  requestAnimationFrame(animateParticles);
-  
-  if (!particles) return;
-  
-  const positions = particles.geometry.attributes.position.array;
-  
-  // Convert mouse position to 3D coordinates
-  const targetX = mouseX * 50;
-  const targetY = mouseY * 50;
-  
-  for (let i = 0; i < positions.length; i += 3) {
-    // Original movement
-    positions[i] += particles.velocities[i];
-    positions[i + 1] += particles.velocities[i + 1];
-    positions[i + 2] += particles.velocities[i + 2];
+function initParticleBackground() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) {
+    console.error('Particle canvas not found');
+    return;
+  }
+
+  if (typeof THREE === 'undefined') {
+    console.error('Three.js library failed to load');
+    return;
+  }
+
+  try {
+    particleScene = new THREE.Scene();
+    particleScene.background = null;
+  } catch (error) {
+    console.error('Error initializing particle scene:', error);
+    return;
+  }
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  particleCamera = new THREE.PerspectiveCamera(60, width / height, 1, 400);
+  particleCamera.position.z = 110;
+
+  particleRenderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+  particleRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  particleRenderer.setSize(width, height);
+  particleRenderer.setClearColor(0x000000, 0);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  particleScene.add(ambientLight);
+
+  const particleGeometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
+  const colors = new Float32Array(particleCount * 3);
+
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+    const x = (Math.random() - 0.5) * 280;
+    const y = (Math.random() - 0.5) * 200;
+    const z = (Math.random() - 0.5) * 40;
     
-    // Cursor attraction - particles move toward cursor
-    const dx = targetX - positions[i];
-    const dy = targetY - positions[i + 1];
+    positions[i3] = x;
+    positions[i3 + 1] = y;
+    positions[i3 + 2] = z;
+
+    // Store home positions within screen bounds
+    particleHomePositions[i] = { x, y, z };
+
+    const colorChoice = i % 3;
+    const themeColorPalette = currentTheme === 'dark' ? themeColors.dark : themeColors.light;
     
-    positions[i] += dx * 0.01;
-    positions[i + 1] += dy * 0.01;
+    let color;
+    if (colorChoice === 0) color = themeColorPalette.primary;
+    else if (colorChoice === 1) color = themeColorPalette.secondary;
+    else color = themeColorPalette.accent;
     
-    // Wrap around boundaries
-    if (positions[i] > 100) positions[i] = -100;
-    if (positions[i] < -100) positions[i] = 100;
-    if (positions[i + 1] > 100) positions[i + 1] = -100;
-    if (positions[i + 1] < -100) positions[i + 1] = 100;
+    colors[i3] = ((color >> 16) & 255) / 255;
+    colors[i3 + 1] = ((color >> 8) & 255) / 255;
+    colors[i3 + 2] = (color & 255) / 255;
+
+    particleVelocities[i] = new THREE.Vector3(
+      (Math.random() - 0.5) * 0.12,
+      (Math.random() - 0.5) * 0.12,
+      (Math.random() - 0.5) * 0.03
+    );
+  }
+
+  particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const themeColor = currentTheme === 'dark' ? themeColors.dark.primary : themeColors.light.primary;
+  particleMaterial = new THREE.PointsMaterial({
+    size: 16,
+    map: createParticleSprite(themeColor),
+    vertexColors: true,
+    transparent: true,
+    alphaTest: 0.01,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true,
+    opacity: 0.9,
+    color: themeColor
+  });
+
+  particlePoints = new THREE.Points(particleGeometry, particleMaterial);
+  particleScene.add(particlePoints);
+
+  window.addEventListener('mousemove', onParticleCursorMove);
+  window.addEventListener('resize', onParticleResize);
+
+  console.log('Particle background setup complete. Particle count:', particleCount);
+  
+  // Check if particles visible in experience section
+  const experienceSection = document.querySelector('#journey');
+  if (experienceSection) {
+    console.log('✅ Experience/Journey section found - particles ARE NOW VISIBLE here with home position return');
+  } else {
+    console.log('❌ Experience section not found');
   }
   
-  particles.geometry.attributes.position.needsUpdate = true;
-  particles.rotation.x += 0.0001;
-  particles.rotation.y += 0.0002;
+  animateParticleBackground();
+}
+
+function onParticleCursorMove(event) {
+  const x = (event.clientX / window.innerWidth) * 2 - 1;
+  const y = -(event.clientY / window.innerHeight) * 2 + 1;
   
-  particleRenderer.render(particleScene, particleCamera);
+  pointerTarget.x = x * 110;
+  pointerTarget.y = y * 80;
+  
+  // Calculate cursor velocity
+  pointerVelocity.x = pointerTarget.x - pointerPrevious.x;
+  pointerVelocity.y = pointerTarget.y - pointerPrevious.y;
+  
+  pointerPrevious.copy(pointerTarget);
+}
+
+function onParticleResize() {
+  if (!particleRenderer || !particleCamera) return;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  particleCamera.aspect = width / height;
+  particleCamera.updateProjectionMatrix();
+  particleRenderer.setSize(width, height);
+}
+
+function animateParticleBackground() {
+  requestAnimationFrame(animateParticleBackground);
+  if (!particlePoints || !particleRenderer || !particleScene) return;
+
+  try {
+    const positions = particlePoints.geometry.attributes.position.array;
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+    const px = positions[i3];
+    const py = positions[i3 + 1];
+
+    const dx = pointerTarget.x - px;
+    const dy = pointerTarget.y - py;
+    const distance = Math.sqrt(dx * dx + dy * dy) + 0.0001;
+    
+    // Apply cursor velocity direction to nearby particles
+    const influence = Math.max(0, 1 - distance / 150);
+    const velocityMagnitude = Math.sqrt(pointerVelocity.x * pointerVelocity.x + pointerVelocity.y * pointerVelocity.y);
+    
+    if (velocityMagnitude > 0.1) {
+      particleVelocities[i].x += pointerVelocity.x * influence * 0.15;
+      particleVelocities[i].y += pointerVelocity.y * influence * 0.15;
+    }
+    
+    // Gentle attraction to cursor
+    const pull = Math.min(0.006, 15 / distance);
+    particleVelocities[i].x += dx * pull * 0.0005;
+    particleVelocities[i].y += dy * pull * 0.0005;
+    
+    // Pull back to home position
+    const homeX = particleHomePositions[i].x;
+    const homeY = particleHomePositions[i].y;
+    
+    const distToHome = Math.sqrt(
+      Math.pow(positions[i3] - homeX, 2) + 
+      Math.pow(positions[i3 + 1] - homeY, 2)
+    );
+    
+    if (distToHome > 0.5) {
+      const homeForce = Math.min(0.02, 10 / (distToHome + 0.1));
+      particleVelocities[i].x += (homeX - positions[i3]) * homeForce * 0.001;
+      particleVelocities[i].y += (homeY - positions[i3 + 1]) * homeForce * 0.001;
+    }
+    
+    // Random motion
+    particleVelocities[i].x += (Math.random() - 0.5) * 0.0015;
+    particleVelocities[i].y += (Math.random() - 0.5) * 0.0015;
+    
+    // Damping
+    particleVelocities[i].multiplyScalar(0.96);
+
+    positions[i3] += particleVelocities[i].x;
+    positions[i3 + 1] += particleVelocities[i].y;
+    positions[i3 + 2] += particleVelocities[i].z;
+  }
+
+  // Particle-to-particle separation to prevent collisions
+  const minSeparation = 8;
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+    for (let j = i + 1; j < particleCount; j++) {
+      const j3 = j * 3;
+      const dx = positions[j3] - positions[i3];
+      const dy = positions[j3 + 1] - positions[i3 + 1];
+      const distance = Math.sqrt(dx * dx + dy * dy) + 0.0001;
+
+      if (distance < minSeparation) {
+        const pushForce = (minSeparation - distance) * 0.5;
+        const normalX = dx / distance;
+        const normalY = dy / distance;
+
+        // Push particles apart
+        particleVelocities[i].x -= normalX * pushForce * 0.01;
+        particleVelocities[i].y -= normalY * pushForce * 0.01;
+        particleVelocities[j].x += normalX * pushForce * 0.01;
+        particleVelocities[j].y += normalY * pushForce * 0.01;
+
+        // Physically separate them
+        const overlap = (minSeparation - distance) * 0.5;
+        positions[i3] -= normalX * overlap;
+        positions[i3 + 1] -= normalY * overlap;
+        positions[j3] += normalX * overlap;
+        positions[j3 + 1] += normalY * overlap;
+      }
+    }
+  }
+
+  // Boundary checking for all particles
+  const maxX = 150;
+  const maxY = 110;
+  const maxZ = 35;
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+
+    if (positions[i3] > maxX) {
+      positions[i3] = maxX;
+      particleVelocities[i].x *= -0.6;
+    }
+    if (positions[i3] < -maxX) {
+      positions[i3] = -maxX;
+      particleVelocities[i].x *= -0.6;
+    }
+    if (positions[i3 + 1] > maxY) {
+      positions[i3 + 1] = maxY;
+      particleVelocities[i].y *= -0.6;
+    }
+    if (positions[i3 + 1] < -maxY) {
+      positions[i3 + 1] = -maxY;
+      particleVelocities[i].y *= -0.6;
+    }
+    if (positions[i3 + 2] > maxZ) {
+      positions[i3 + 2] = maxZ;
+      particleVelocities[i].z *= -0.6;
+    }
+    if (positions[i3 + 2] < -maxZ) {
+      positions[i3 + 2] = -maxZ;
+      particleVelocities[i].z *= -0.6;
+    }
+  }
+
+    particlePoints.geometry.attributes.position.needsUpdate = true;
+    particleRenderer.render(particleScene, particleCamera);
+  } catch (error) {
+    console.error('Error in particle animation loop:', error);
+  }
+}
+
+function updateParticleColors() {
+  if (!particlePoints || !particleMaterial) return;
+  
+  const themeColor = currentTheme === 'dark' ? themeColors.dark.primary : themeColors.light.primary;
+  
+  // Update sprite texture with new color
+  particleMaterial.map = createParticleSprite(themeColor);
+  particleMaterial.color.setHex(themeColor);
+  particleMaterial.needsUpdate = true;
+  
+  // Update vertex colors
+  const colors = particlePoints.geometry.attributes.color.array;
+  for (let i = 0; i < particleCount; i++) {
+    const i3 = i * 3;
+    const colorChoice = i % 3;
+    const themeColorPalette = currentTheme === 'dark' ? themeColors.dark : themeColors.light;
+    
+    let color;
+    if (colorChoice === 0) color = themeColorPalette.primary;
+    else if (colorChoice === 1) color = themeColorPalette.secondary;
+    else color = themeColorPalette.accent;
+    
+    colors[i3] = ((color >> 16) & 255) / 255;
+    colors[i3 + 1] = ((color >> 8) & 255) / 255;
+    colors[i3 + 2] = (color & 255) / 255;
+  }
+  particlePoints.geometry.attributes.color.needsUpdate = true;
 }
 
 // Theme Toggle
@@ -1468,18 +1724,22 @@ function initThemeToggle() {
   if (!themeToggle) return;
   
   const savedTheme = localStorage.getItem('theme') || 'dark';
+  currentTheme = savedTheme;
   document.documentElement.classList.toggle('dark', savedTheme === 'dark');
   document.body.classList.toggle('light-theme', savedTheme === 'light');
   updateThemeIcon(savedTheme);
   
   themeToggle.addEventListener('click', () => {
-    const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    currentTheme = newTheme;
     
     document.body.classList.toggle('light-theme', newTheme === 'light');
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
+    
+    // Update particle colors when theme changes
+    updateParticleColors();
   });
 }
 
@@ -1514,10 +1774,16 @@ window.addEventListener('DOMContentLoaded', () => {
     renderFooter();
     console.log('Footer rendered');
     
-    // Initialize particle system
+    // Initialize background particle field
     setTimeout(() => {
-      initParticleSystem();
-      console.log('Particle system initialized');
+      try {
+        console.log('Initializing particle background...');
+        console.log('THREE available:', typeof THREE !== 'undefined');
+        initParticleBackground();
+        console.log('Particle background initialized successfully');
+      } catch (err) {
+        console.error('Failed to initialize particles:', err);
+      }
     }, 500);
     
     // Initialize theme toggle
